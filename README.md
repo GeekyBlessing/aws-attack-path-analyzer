@@ -13,8 +13,6 @@
 
 ## 🎯 What It Does
 
-AWS Attack Path Analyzer automatically discovers and visualizes how an attacker can move from a **low-privileged AWS identity** to **administrator access**, secrets, or sensitive data.
-
 | Feature | Basic Tools | This Tool |
 |---------|------------|-----------|
 | IAM privesc detection | ✅ | ✅ |
@@ -38,7 +36,7 @@ Tested against a real AWS account (eu-north-1):
 - Identities Scanned: 8
 - Exploitable Paths: 34
 - Critical Paths: 16
-- Cross-Account Paths: 1 (Management → Log Archive)
+- Cross-Account Paths: 1 (Management to Log Archive)
 - Secrets Exposed: 1 (RDS cluster secret)
 
 ---
@@ -66,7 +64,6 @@ Tested against a real AWS account (eu-north-1):
 | SSMParameterAccess | ssm:GetParameter | 🟡 Medium | T1552.001 |
 | S3SensitiveRead | s3:GetObject | 🟡 Medium | T1530 |
 | SetDefaultPolicyVersion | iam:SetDefaultPolicyVersion | 🟠 High | T1098.001 |
-
 
 ---
 
@@ -130,7 +127,7 @@ docker-compose up --build
 
 ## 🛡️ Required IAM Permissions
 
-Attach AWS managed policy **SecurityAudit** plus organizations read access.
+Attach AWS managed policy SecurityAudit plus organizations read access.
 
 ---
 
@@ -159,5 +156,3 @@ GitHub Actions on every push:
 - GitHub: https://github.com/GeekyBlessing
 - LinkedIn: https://linkedin.com/in/toriola-opeyemi
 - Substack: https://geekyblessing.substack.com
-
-
