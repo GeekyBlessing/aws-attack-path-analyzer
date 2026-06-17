@@ -68,6 +68,33 @@ Tested against a real AWS account (eu-north-1):
 ---
 
 ## Architecture
+
+```
+attack-path-analyzer/
+├── main.py                      # CLI entrypoint
+├── modules/
+│   ├── analyzer.py              # Core IAM enumeration engine
+│   ├── scp_analyzer.py          # SCP awareness
+│   ├── condition_evaluator.py   # MFA/IP/VPC condition evaluation
+│   ├── cross_account.py         # Cross-account path detection
+│   ├── risk_scorer.py           # Risk scoring engine (0-100)
+│   ├── remediation.py           # Remediation guidance per technique
+│   ├── executive_summary.py     # Boardroom-ready risk summary
+│   ├── reporter.py              # Rich CLI output
+│   └── html_reporter.py         # Interactive D3.js HTML report
+├── api/
+│   ├── main.py                  # FastAPI application
+│   ├── models.py                # Pydantic schemas
+│   └── routes/
+│       ├── scan.py              # POST /scan
+│       ├── paths.py             # GET /paths
+│       ├── summary.py           # GET /summary
+│       └── remediation.py       # GET /remediation
+├── Dockerfile
+├── docker-compose.yml
+└── .github/workflows/ci.yml
+```
+
 ---
 
 ## Quick Start
