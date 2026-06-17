@@ -69,32 +69,29 @@ Tested against a real AWS account (eu-north-1):
 
 ## Architecture
 
+```mermaid
+flowchart TD
+    A[AWS Account] -->|boto3 API calls| B[Analyzer Engine]
+    B --> C[IAM Enumerator]
+    B --> D[SCP Analyzer]
+    B --> E[Condition Evaluator]
+    B --> F[Cross-Account Detector]
+    C --> G[Attack Paths]
+    D --> G
+    E --> G
+    F --> G
+    G --> H[Risk Scorer]
+    H --> I[Executive Summary]
+    H --> J[Remediation Engine]
+    I --> K[CLI Report]
+    I --> L[HTML Report D3.js]
+    I --> M[FastAPI REST API]
+    J --> M
+    M --> N[POST /scan]
+    M --> O[GET /paths]
+    M --> P[GET /summary/executive]
+    M --> Q[GET /remediation/export/scp-bundle]
 ```
-attack-path-analyzer/
-├── main.py                      # CLI entrypoint
-├── modules/
-│   ├── analyzer.py              # Core IAM enumeration engine
-│   ├── scp_analyzer.py          # SCP awareness
-│   ├── condition_evaluator.py   # MFA/IP/VPC condition evaluation
-│   ├── cross_account.py         # Cross-account path detection
-│   ├── risk_scorer.py           # Risk scoring engine (0-100)
-│   ├── remediation.py           # Remediation guidance per technique
-│   ├── executive_summary.py     # Boardroom-ready risk summary
-│   ├── reporter.py              # Rich CLI output
-│   └── html_reporter.py         # Interactive D3.js HTML report
-├── api/
-│   ├── main.py                  # FastAPI application
-│   ├── models.py                # Pydantic schemas
-│   └── routes/
-│       ├── scan.py              # POST /scan
-│       ├── paths.py             # GET /paths
-│       ├── summary.py           # GET /summary
-│       └── remediation.py       # GET /remediation
-├── Dockerfile
-├── docker-compose.yml
-└── .github/workflows/ci.yml
-```
-
 ---
 
 ## Quick Start
