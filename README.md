@@ -1,6 +1,6 @@
 # ⚔️ AWS Attack Path Analyzer
 
-> Expert-level AWS privilege escalation path analyzer with SCP awareness, cross-account detection, risk scoring, FastAPI REST API, and Docker deployment.
+> AWS Attack Path Analyzer discovers privilege escalation paths, lateral movement opportunities, cross-account attack chains, and exposed sensitive resources across AWS environments.
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?style=flat-square&logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green?style=flat-square&logo=fastapi)
@@ -156,4 +156,4 @@ GitHub Actions on every push:
 - LinkedIn: https://linkedin.com/in/toriola-opeyemi
 - Substack: https://geekyblessing.substack.com
 
-*Built as a production-grade portfolio project demonstrating expert-level AWS security engineering.*
+
