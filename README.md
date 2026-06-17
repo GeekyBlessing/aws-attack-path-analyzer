@@ -178,3 +178,22 @@ GitHub Actions on every push:
 - GitHub: https://github.com/GeekyBlessing
 - LinkedIn: https://linkedin.com/in/toriola-opeyemi
 - Substack: https://geekyblessing.substack.com
+
+## 📸 Live Scan Results
+
+### Executive Summary
+
+![Executive Summary](images/cli-executive-summary.png)
+
+### Remediation Guidance & Cross-Account Paths
+
+![Remediation](images/remediation-cross-account.png)
+
+### Interactive HTML Dashboard
+
+![Dashboard](images/html-dashboard.png)
+
+### Risk Scoring
+
+![Risk Scoring](images/risk-scoring.png)
+
