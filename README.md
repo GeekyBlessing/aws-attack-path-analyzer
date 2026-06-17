@@ -67,6 +67,10 @@ Tested against a real AWS account (eu-north-1):
 | S3SensitiveRead | s3:GetObject | 🟡 Medium | T1530 |
 | SetDefaultPolicyVersion | iam:SetDefaultPolicyVersion | 🟠 High | T1098.001 |
 
+
+---
+
+## 🏗️ Architecture
 ---
 
 ## 🚀 Quick Start
