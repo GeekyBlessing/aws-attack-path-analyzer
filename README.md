@@ -11,28 +11,28 @@
 
 ---
 
-## 🎯 What It Does
+## What It Does
 
 | Feature | Basic Tools | This Tool |
 |---------|------------|-----------|
-| IAM privesc detection | ✅ | ✅ |
-| SCP awareness | ❌ | ✅ |
-| Condition key evaluation | ❌ | ✅ |
-| Cross-account path detection | ❌ | ✅ |
-| Risk scoring (0-100) | ❌ | ✅ |
-| Executive summary | ❌ | ✅ |
-| Remediation guidance | ❌ | ✅ |
-| SCP bundle export | ❌ | ✅ |
-| REST API | ❌ | ✅ |
-| Docker deployment | ❌ | ✅ |
+| IAM privesc detection | Yes | Yes |
+| SCP awareness | No | Yes |
+| Condition key evaluation | No | Yes |
+| Cross-account path detection | No | Yes |
+| Risk scoring (0-100) | No | Yes |
+| Executive summary | No | Yes |
+| Remediation guidance | No | Yes |
+| SCP bundle export | No | Yes |
+| REST API | No | Yes |
+| Docker deployment | No | Yes |
 
 ---
 
-## 🔴 Real Findings — Live AWS Account
+## Real Findings — Live AWS Account
 
 Tested against a real AWS account (eu-north-1):
 
-- Overall Risk: CRITICAL — 95/100
+- Overall Risk: CRITICAL 95/100
 - Identities Scanned: 8
 - Exploitable Paths: 34
 - Critical Paths: 16
@@ -41,36 +41,36 @@ Tested against a real AWS account (eu-north-1):
 
 ---
 
-## 🧠 Privilege Escalation Techniques Covered
+## Privilege Escalation Techniques Covered
 
 | Technique | Permissions Required | Severity | MITRE |
 |-----------|---------------------|----------|-------|
-| CreatePolicyVersion | iam:CreatePolicyVersion | 🔴 Critical | T1098.001 |
-| AttachUserPolicy | iam:AttachUserPolicy | 🔴 Critical | T1098.001 |
-| AttachGroupPolicy | iam:AttachGroupPolicy | 🔴 Critical | T1098.001 |
-| AttachRolePolicy | iam:AttachRolePolicy | 🔴 Critical | T1098.001 |
-| UpdateAssumeRolePolicy | iam:UpdateAssumeRolePolicy | 🔴 Critical | T1098.001 |
-| PutUserPolicy | iam:PutUserPolicy | 🔴 Critical | T1098.001 |
-| PutRolePolicy | iam:PutRolePolicy | 🔴 Critical | T1098.001 |
-| CreateRole+PassRole | iam:CreateRole, iam:PassRole | 🔴 Critical | T1098.001 |
-| AssumeRole to Admin | sts:AssumeRole | 🔴 Critical | T1548 |
-| PassRole+Lambda | iam:PassRole, lambda:* | 🟠 High | T1648 |
-| PassRole+EC2 | iam:PassRole, ec2:RunInstances | 🟠 High | T1548 |
-| PassRole+CloudFormation | iam:PassRole, cloudformation:* | 🟠 High | T1648 |
-| SecretsManagerAccess | secretsmanager:GetSecretValue | 🟠 High | T1552.001 |
-| CreateAccessKey | iam:CreateAccessKey | 🟠 High | T1098.001 |
-| CodeBuildPrivesc | codebuild:CreateProject, iam:PassRole | 🟠 High | T1648 |
-| GlueDevEndpoint | glue:CreateDevEndpoint | 🟠 High | T1648 |
-| SSMParameterAccess | ssm:GetParameter | 🟡 Medium | T1552.001 |
-| S3SensitiveRead | s3:GetObject | 🟡 Medium | T1530 |
-| SetDefaultPolicyVersion | iam:SetDefaultPolicyVersion | 🟠 High | T1098.001 |
+| CreatePolicyVersion | iam:CreatePolicyVersion | Critical | T1098.001 |
+| AttachUserPolicy | iam:AttachUserPolicy | Critical | T1098.001 |
+| AttachGroupPolicy | iam:AttachGroupPolicy | Critical | T1098.001 |
+| AttachRolePolicy | iam:AttachRolePolicy | Critical | T1098.001 |
+| UpdateAssumeRolePolicy | iam:UpdateAssumeRolePolicy | Critical | T1098.001 |
+| PutUserPolicy | iam:PutUserPolicy | Critical | T1098.001 |
+| PutRolePolicy | iam:PutRolePolicy | Critical | T1098.001 |
+| CreateRole+PassRole | iam:CreateRole, iam:PassRole | Critical | T1098.001 |
+| AssumeRole to Admin | sts:AssumeRole | Critical | T1548 |
+| PassRole+Lambda | iam:PassRole, lambda:* | High | T1648 |
+| PassRole+EC2 | iam:PassRole, ec2:RunInstances | High | T1548 |
+| PassRole+CloudFormation | iam:PassRole, cloudformation:* | High | T1648 |
+| SecretsManagerAccess | secretsmanager:GetSecretValue | High | T1552.001 |
+| CreateAccessKey | iam:CreateAccessKey | High | T1098.001 |
+| CodeBuildPrivesc | codebuild:CreateProject, iam:PassRole | High | T1648 |
+| GlueDevEndpoint | glue:CreateDevEndpoint | High | T1648 |
+| SSMParameterAccess | ssm:GetParameter | Medium | T1552.001 |
+| S3SensitiveRead | s3:GetObject | Medium | T1530 |
+| SetDefaultPolicyVersion | iam:SetDefaultPolicyVersion | High | T1098.001 |
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### CLI
 
@@ -85,9 +85,7 @@ python main.py --profile default --region eu-north-1
 pip install fastapi uvicorn[standard]
 uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
 
-curl -X POST http://localhost:8000/api/v1/scan \
-  -H "Content-Type: application/json" \
-  -d '{"profile": "default", "region": "eu-north-1"}'
+curl -X POST http://localhost:8000/api/v1/scan   -H "Content-Type: application/json"   -d '{"profile": "default", "region": "eu-north-1"}'
 ```
 
 ### Docker
@@ -98,7 +96,7 @@ docker-compose up --build
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -114,7 +112,7 @@ docker-compose up --build
 
 ---
 
-## 📊 Risk Scoring Methodology
+## Risk Scoring Methodology
 
 | Factor | Weight | Description |
 |--------|--------|-------------|
@@ -125,13 +123,13 @@ docker-compose up --build
 
 ---
 
-## 🛡️ Required IAM Permissions
+## Required IAM Permissions
 
 Attach AWS managed policy SecurityAudit plus organizations read access.
 
 ---
 
-## 🔧 CI/CD Pipeline
+## CI/CD Pipeline
 
 GitHub Actions on every push:
 1. Lint and syntax check all modules
@@ -141,7 +139,7 @@ GitHub Actions on every push:
 
 ---
 
-## 📖 References
+## References
 
 - Rhino Security Labs: https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/
 - MITRE ATT&CK Cloud: https://attack.mitre.org/matrices/enterprise/cloud/
@@ -149,7 +147,7 @@ GitHub Actions on every push:
 
 ---
 
-## 👤 Author
+## Author
 
 **Toriola Opeyemi** — Cloud Security Engineer
 
